@@ -1,4 +1,4 @@
-package com.practice.problem.solving;
+package com.practice.problem.solving.strings;
 
 public class ReverseString {
     public String reverseStringByStringBuilder(String inputString){

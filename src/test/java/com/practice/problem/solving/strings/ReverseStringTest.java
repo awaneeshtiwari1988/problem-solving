@@ -1,4 +1,4 @@
-package com.practice.problem.solving;
+package com.practice.problem.solving.strings;
 
 import org.junit.Assert;
 import org.junit.Test;
