@@ -1,5 +1,8 @@
 package com.practice.problem.solving.strings;
 
+/**
+ * Given a string, reverse all of its characters and return the resulting string.
+ */
 public class ReverseString {
     public String reverseStringByStringBuilder(String inputString){
         StringBuilder stringBuilder = new StringBuilder(inputString);

@@ -1,5 +1,8 @@
 package com.practice.problem.solving.strings;
 
+/**
+ * Given a string, return whether or not it forms a palindrome ignoring case and non-alphabetical characters.
+ */
 public class ValidatePalindrome {
 
     public boolean isPalindromeUsingBuilder(String inputString){
