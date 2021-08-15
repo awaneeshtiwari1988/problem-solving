@@ -1,4 +1,4 @@
-package com.practice.problem.solving.strings;
+package com.practice.problem.solving.array;
 
 public class MatchPairs {
 
