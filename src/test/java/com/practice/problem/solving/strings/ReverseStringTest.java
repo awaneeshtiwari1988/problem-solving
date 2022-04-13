@@ -20,4 +20,20 @@ public class ReverseStringTest {
         Assert.assertEquals("etyB yliaD ehT",reverseString.reverseStringByTraversingChars("The Daily Byte"));
         Assert.assertEquals("civic",reverseString.reverseStringByTraversingChars("civic"));
     }
+
+    @Test
+    public void testReverseString_1(){
+        ReverseString reverseString = new ReverseString();
+        Assert.assertEquals(String.valueOf("taC".toCharArray()),String.valueOf(reverseString.reverseStringByTwoWayTraversal("Cat".toCharArray())));
+        Assert.assertEquals(String.valueOf("etyB yliaD ehT".toCharArray()),String.valueOf(reverseString.reverseStringByTwoWayTraversal("The Daily Byte".toCharArray())));
+        Assert.assertEquals(String.valueOf("civic".toCharArray()),String.valueOf(reverseString.reverseStringByTwoWayTraversal("civic".toCharArray())));
+    }
+
+    @Test
+    public void testReverseString_2(){
+        ReverseString reverseString = new ReverseString();
+        Assert.assertEquals(String.valueOf("taC".toCharArray()),String.valueOf(reverseString.reverseStringByStacks("Cat".toCharArray())));
+        Assert.assertEquals(String.valueOf("etyB yliaD ehT".toCharArray()),String.valueOf(reverseString.reverseStringByStacks("The Daily Byte".toCharArray())));
+        Assert.assertEquals(String.valueOf("civic".toCharArray()),String.valueOf(reverseString.reverseStringByStacks("civic".toCharArray())));
+    }
 }
