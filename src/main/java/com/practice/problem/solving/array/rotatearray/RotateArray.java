@@ -1,27 +1,31 @@
-package com.practice.problem.solving.array;
+package com.practice.problem.solving.array.rotatearray;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * We’re given an array of integers, nums. Rotate the array by n elements, where n is an integer:
+ *
+ * For positive values of n, perform a right rotation.
+ * For negative values of n, perform a left rotation.
+ *
+ * Make changes to the original array.
+ *
+ * Algorithm to perform rotations:
+ *
+ * 1. Normalize the number of rotations
+ *      a. If number of rotations is greater than the number of elements in the array then number of rotations equals
+ *      the modular division from number of elements in the array, that is numberofRotations = numberOfRotations % lengthOfArray.
+ *      b. If number of rotations is negative then number of rotations is equal to the subtraction of absolute value of
+ *      number of rotations with the array length, that is numberOfRotations = array.length - Math.abs(numberOfRotations)
+ *
+ * 2. Reverse the original array
+ *      - reverse logic could be starting with both the end and keep on swapping and moving on towards the center.
+ * 3. Reverse the elements from 0 to n - 1.
+ * 4. Reverse the elements from n to length - 1.
+ */
 public class RotateArray {
-
-    public int[] rotateArrayBySizeOfRotation(int[] inputArray, int sizeOfRotation) {
-        for (int i = 0; i < sizeOfRotation; i++) {
-            inputArray = rotateArray(inputArray);
-        }
-        return inputArray;
-    }
-
-    public int[] rotateArray(int[] inputArray) {
-        int temp = inputArray[0];
-        System.arraycopy(inputArray, 1, inputArray, 0, inputArray.length - 1);
-        inputArray[inputArray.length - 1] = temp;
-        return inputArray;
-    }
 
     public int[] rotateArray(int[] inputArray, int n) {
         if (inputArray.length == 0) {

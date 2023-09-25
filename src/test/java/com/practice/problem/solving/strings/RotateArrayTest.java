@@ -1,6 +1,6 @@
 package com.practice.problem.solving.strings;
 
-import com.practice.problem.solving.array.RotateArray;
+import com.practice.problem.solving.array.rotatearray.RotateArray;
 import org.junit.Assert;
 import org.junit.Test;
 
