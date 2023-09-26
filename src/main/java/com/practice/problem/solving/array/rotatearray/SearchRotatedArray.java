@@ -1,7 +1,12 @@
-package com.practice.problem.solving.array;
+package com.practice.problem.solving.array.rotatearray;
 
-import java.util.Set;
-
+/**
+ * We’re given a sorted integer array, nums and an integer value, target.
+ * The array is rotated by some arbitrary number. Search the target in this array. If the target does not exist then
+ * return -1.
+ *
+ * Algorithm is : Follow binary search.
+ */
 public class SearchRotatedArray {
 
     private int getNumInRotatedArray(int[] inputArray, int target){
@@ -39,7 +44,7 @@ public class SearchRotatedArray {
 
     public static void main(String[] args) {
         SearchRotatedArray searchRotatedArray = new SearchRotatedArray();
-        int[] inputArray = {6, 7, 1, 2, 3, 4, 5};
-        System.out.println(searchRotatedArray.getNumInRotatedArray(inputArray,3));
+        int[] inputArray = {1,0,1,1,1};
+        System.out.println(searchRotatedArray.getNumInRotatedArray(inputArray,0));
     }
 }

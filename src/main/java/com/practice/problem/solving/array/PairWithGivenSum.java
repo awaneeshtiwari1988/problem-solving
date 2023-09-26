@@ -1,23 +1,19 @@
 package com.practice.problem.solving.array;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PairWithGivenSum {
 
      boolean findSumOfTwo(int[] A, int val) {
-        int complementSum = 0;
-        int currentSum = 0;
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i = 0; i < A.length; i++){
-            complementSum = val - A[i];
+         Set<Integer> traversedElements = new HashSet<>();
+         for (int j : A) {
+             if (traversedElements.contains(val - j) ) {
+                 return true;
+             }
 
-            if(map.containsKey(A[i]) || map.containsKey(complementSum)){
-                return true;
-            } else {
-                map.put(complementSum, complementSum);
-            }
-        }
+             traversedElements.add(j);
+         }
 
         return false;
     }
