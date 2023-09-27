@@ -24,12 +24,10 @@ public class PairWithGivenSum {
 
         int right = A.length - 1;
         int left = 0;
-        int[] output = {};
         while(left < right){
             int sum = A[left] + A[right];
 
             if(sum == val){
-                output = new int[]{left + 1, right + 1};
                 return true;
             }
 
