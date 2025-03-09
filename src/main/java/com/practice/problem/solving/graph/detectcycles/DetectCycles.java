@@ -1,4 +1,4 @@
-package com.practice.problem.solving.graph;
+package com.practice.problem.solving.graph.detectcycles;
 
 import java.util.Map;
 
