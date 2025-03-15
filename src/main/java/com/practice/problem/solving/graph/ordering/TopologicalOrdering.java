@@ -4,53 +4,70 @@ import java.util.*;
 
 public class TopologicalOrdering {
 
-    public static Map<String, Vertex> buildGraph(int[][] edges){
+    public static Map<String, Vertex> buildGraph(int numCourses, int[][] preRequisites) {
         Map<String, Vertex> graph = new HashMap<>();
-        for(int[] edge : edges){
-            String startVertex = String.valueOf(edge[0]);
-            String endVertex = String.valueOf(edge[1]);
-            graph.putIfAbsent(startVertex, new Vertex(startVertex));
-            graph.putIfAbsent(endVertex, new Vertex(endVertex));
-            graph.get(startVertex).addNeighbours(new Vertex(endVertex));
+
+        // Create the graph
+        for (int i = 0; i < numCourses; i++) {
+            String courseName = String.valueOf(i);
+            graph.put(courseName, new Vertex(courseName));
+        }
+
+        // Add the Neighbours
+        for (int[] preRequisite : preRequisites) {
+            String course = String.valueOf(preRequisite[0]);
+            String preRequisiteCourse = String.valueOf(preRequisite[1]);
+            graph.get(preRequisiteCourse).addNeighbours(graph.get(course));
         }
 
         return graph;
     }
 
-    public static void depthFirstSearch(Vertex vertex, Stack<Vertex> stack){
+    public static boolean depthFirstSearch(Vertex vertex, Stack<Vertex> stack){
         vertex.setBeingVisited(true);
+
         for (Vertex neighbourVertex : vertex.getAdjacencyList()) {
-            if(!neighbourVertex.isVisited()){
-                depthFirstSearch(neighbourVertex,stack);
+            if (neighbourVertex.isBeingVisited()) {
+                return true; // Cycle detected
+            }
+
+            if (!neighbourVertex.isVisited()) {
+                if (depthFirstSearch(neighbourVertex,stack)) {
+                    return true; // Cycle detected in recursion
+                }
             }
         }
 
         vertex.setBeingVisited(false);
         vertex.setVisited(true);
         stack.push(vertex);
+        return false;
     }
 
-    public static List<Vertex> topologicalSort(Map<String, Vertex> graph){
-        List<Vertex> result = new ArrayList<>();
+    public static List<String> topologicalSort(Map<String, Vertex> graph){
+        List<String> result = new ArrayList<>();
         Stack<Vertex> stack = new Stack<>();
 
         for(Vertex vertex : graph.values()){
             if(!vertex.isVisited()){
-                depthFirstSearch(vertex, stack);
+                if(depthFirstSearch(vertex, stack)){
+                    return new ArrayList<>();
+                }
             }
         }
 
         while(!stack.isEmpty()){
-            result.add(stack.pop());
+            result.add(stack.pop().getName());
         }
 
         return result;
     }
 
     public static void main(String[] args) {
-        int[][] edges = { {5, 2}, {5, 0}, {4, 0}, {4, 1}, {2, 3}, {3, 1} };
-        Map<String, Vertex> graph = buildGraph(edges);
-        graph.forEach((k,v) -> System.out.println(v));
+        int[][] preRequisites = { {1, 0}};
+        Map<String, Vertex> graph = buildGraph(2,preRequisites);
+        List<String> ordered = topologicalSort(graph);
+        System.out.println(ordered);
     }
 
 }

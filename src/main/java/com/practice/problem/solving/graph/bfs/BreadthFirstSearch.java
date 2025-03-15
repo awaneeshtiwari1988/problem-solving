@@ -9,16 +9,16 @@ public class BreadthFirstSearch {
 
     public static int countIslands(int[][] grid){
         Map<String, Vertex> graph = buildGraph(grid);
-        int islancCount = 0;
+        int islandCount = 0;
 
         for(Vertex vertex : graph.values()){
             if(!vertex.isVisited()){
                 breadthFirstSearch(vertex);
-                islancCount++;
+                islandCount++;
             }
         }
 
-        return islancCount;
+        return islandCount;
     }
 
     public static Map<String, Vertex> buildGraph(int[][] grid) {

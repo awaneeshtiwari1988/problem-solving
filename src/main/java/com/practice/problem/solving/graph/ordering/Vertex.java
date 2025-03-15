@@ -15,6 +15,10 @@ public class Vertex {
         this.adjacencyList = new ArrayList<>();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public boolean isBeingVisited() {
         return beingVisited;
     }
@@ -36,7 +40,7 @@ public class Vertex {
     }
 
     public void addNeighbours(Vertex vertex) {
-        this.adjacencyList = adjacencyList;
+        this.adjacencyList.add(vertex);
     }
 
     @Override
