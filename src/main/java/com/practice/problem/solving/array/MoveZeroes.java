@@ -4,6 +4,23 @@ import java.util.Arrays;
 
 public class MoveZeroes {
 
+    public void moveZeroesToEnd(int[] nums){
+        if(nums == null || nums.length == 0){
+            return;
+        }
+
+        int leftIndex = 0;
+
+        for(int rightIndex = 0; rightIndex < nums.length; rightIndex++){
+            if(nums[rightIndex] != 0){
+                int numRight = nums[rightIndex];
+                nums[rightIndex] = nums[leftIndex];
+                nums[leftIndex] = numRight;
+                leftIndex++;
+            }
+        }
+    }
+
     public void moveZeroesToLeft(int[] nums) {
         int countOfZeroes = 0;
 
@@ -66,5 +83,9 @@ public class MoveZeroes {
         int[] input = {1, 10, 20, 0, 59, 63, 0, 88, 0};
         moveZeroes.moveZeroesToLeftBigOOfn(input);
         System.out.println(Arrays.toString(input));
+
+        int[] numsMoveToEnd = {0,1,0,3,12};
+        moveZeroes.moveZeroesToEnd(numsMoveToEnd);
+        System.out.println(Arrays.toString(numsMoveToEnd));
     }
 }
