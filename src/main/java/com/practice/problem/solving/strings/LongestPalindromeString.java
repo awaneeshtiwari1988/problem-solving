@@ -6,7 +6,8 @@ public class LongestPalindromeString {
         if(s == null || s.length() == 0){
             return "";
         }
-        int start = 0, end = 0;
+        int start = 0;
+        int end = 0;
         for(int i =0; i < s.length();i++){
             int len1 = getPalindromeLength(s, i, i);
             int len2 = getPalindromeLength(s, i, i+1);
