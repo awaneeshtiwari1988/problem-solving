@@ -8,6 +8,10 @@ public class Trie {
         this.root = new TrieNode("");
     }
 
+    public TrieNode getRoot() {
+        return root;
+    }
+
     public void insert(String character){
         TrieNode tempNode = this.root;
 
