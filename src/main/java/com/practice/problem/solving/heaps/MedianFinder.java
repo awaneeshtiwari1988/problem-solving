@@ -16,7 +16,7 @@ public class MedianFinder {
     public void addNum(int num) {
         maxHeap.add(num);
 
-        // top of maxheap should be greater than of minheap
+        // top of maxheap should be <= than of minheap
         if(!maxHeap.isEmpty() && !minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()){
             minHeap.offer(maxHeap.poll());
         }
