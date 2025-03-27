@@ -1,5 +1,7 @@
 package com.practice.problem.solving.strings;
 
+import com.practice.problem.solving.twopointers.ValidPalindrome;
+
 /**
  * Given a string, return whether or not it forms a palindrome ignoring case and non-alphabetical characters.
  */
@@ -29,5 +31,27 @@ public class ValidatePalindrome {
             }
         }
         return inputStringWithAlphabetsOnly;
+    }
+
+    public boolean isPalindrome(String s) {
+        if(s == null || s.length() == 0){
+            return true;
+        }
+
+        s = s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+        System.out.println(s);
+        int left = 0;
+        int right = s.length() - 1;
+        while(left < right){
+            if(s.charAt(left++) != s.charAt(right--)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        ValidatePalindrome validatePalindrome = new ValidatePalindrome();
+        System.out.println(validatePalindrome.isPalindrome("A man, a plan, a canal -- Panama"));
     }
 }
