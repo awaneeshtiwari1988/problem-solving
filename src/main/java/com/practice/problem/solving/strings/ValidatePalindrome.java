@@ -50,8 +50,37 @@ public class ValidatePalindrome {
         return true;
     }
 
+    public boolean isPalindromeWithSpaceAndSpecialCharacters(String s) {
+        if(s == null || s.isEmpty()){
+            return true;
+        }
+
+        int left = 0;
+        int right = s.length() - 1;
+        s = s.toLowerCase();
+        while (left <= right){
+            char leftCh = s.charAt(left);
+            char rightCh = s.charAt(right);
+
+            if(!Character.isLetterOrDigit(leftCh)){
+                left++;
+            } else if (!Character.isLetterOrDigit(rightCh)){
+                right--;
+            } else {
+                if(leftCh != rightCh){
+                    return false;
+                }
+                left++;
+                right--;
+            }
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         ValidatePalindrome validatePalindrome = new ValidatePalindrome();
         System.out.println(validatePalindrome.isPalindrome("A man, a plan, a canal -- Panama"));
+        System.out.println(validatePalindrome.isPalindromeWithSpaceAndSpecialCharacters("A man, a plan, a canal -- Panama"));
     }
 }
