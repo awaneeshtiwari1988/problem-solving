@@ -5,8 +5,8 @@ import java.util.*;
 public class TaskScheduler {
 
     public int leastInterval(char[] tasks, int n) {
-        if(n == tasks.length){
-            return 1;
+        if(n == 0){
+            return tasks.length;
         }
 
         // Create Frequency Map
