@@ -49,4 +49,23 @@ public class Trie {
 
         return true;
     }
+
+    public boolean search(String key, int index, TrieNode root){
+        if (root == null) return false;
+        if (index == key.length()) return root.isLeaf();
+
+        char ch = key.charAt(index);
+        if (ch == '.') {
+            for (TrieNode child : root.getChildren()) {
+                if (child != null && search(key, index + 1, child)) {
+                    return true;
+                }
+            }
+            return false;
+        } else {
+            int asciiIndex = ch - 'a';
+            return search(key, index + 1, root.getChild(asciiIndex));
+        }
+
+    }
 }
