@@ -66,6 +66,25 @@ public class Trie {
             int asciiIndex = ch - 'a';
             return search(key, index + 1, root.getChild(asciiIndex));
         }
-
     }
+
+    public String dfs(TrieNode node, String word){
+        String result = word;
+
+        for (int i = 0; i < 26; i++) {
+            TrieNode tempNode = node.getChild(i);
+            if(tempNode != null && tempNode.isLeaf()){
+                String childWord = dfs(tempNode, word + (char)(i + 'a'));
+                if(childWord.length() > result.length() ||
+                        (result.length() == childWord.length() && childWord.compareTo(result) < 0)){
+                    result = childWord;
+                }
+            }
+        }
+
+        return result;
+    }
+
+
+
 }
