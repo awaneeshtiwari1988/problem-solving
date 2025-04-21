@@ -26,6 +26,24 @@ public class InsertInArray {
         return output;
     }
 
+    public List<Integer> insertAtGivenPositionBuiltIn(int[] inputArray, int element, int position){
+        List<Integer> output = new ArrayList<>();
+        for (int ele: inputArray) {
+            output.add(ele);
+        }
+
+        output.add(position-1, element);
+        return output;
+    }
+
+    public int[] insertAtGivenPosition(int[] inputArray, int element, int position){
+        int[] output = new int[inputArray.length + 1];
+        System.arraycopy(inputArray, 0, output, 0, position - 1);
+        output[position - 1] = element;
+        System.arraycopy(inputArray, position - 1, output, position,inputArray.length - (position - 1));
+        return output;
+    }
+
     public static void main(String[] args) {
         InsertInArray insertInArray = new InsertInArray();
         int[] inputArray = {10,20,30,40};
@@ -33,5 +51,8 @@ public class InsertInArray {
 
         int[] output = insertInArray.insertAtBeginning(inputArray,50);
         System.out.println(Arrays.toString(output));
+
+        System.out.println(insertInArray.insertAtGivenPositionBuiltIn(inputArray, 50, 2));
+        System.out.println(Arrays.toString(insertInArray.insertAtGivenPosition(inputArray, 50, 2)));
     }
 }
