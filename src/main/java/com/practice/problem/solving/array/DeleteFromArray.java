@@ -42,6 +42,24 @@ public class DeleteFromArray {
         return output;
     }
 
+    public List<Integer> deleteFromEndBuiltIn(int[] inputArray){
+        List<Integer> output = new ArrayList<>();
+        for(int ele : inputArray){
+            output.add(ele);
+        }
+
+        output.remove(inputArray.length - 1);
+        return output;
+    }
+
+    public int[] deleteFromEnd(int[] inputArray){
+        int[] output = new int[inputArray.length - 1];
+        System.arraycopy(inputArray, 0, output, 0, inputArray.length - 1);
+        return output;
+    }
+
+
+
     public static void main(String[] args) {
         int[] inputArray = {10,20,30,40,50};
         DeleteFromArray deleteFromArray = new DeleteFromArray();
@@ -49,5 +67,7 @@ public class DeleteFromArray {
         System.out.println(Arrays.toString(deleteFromArray.deleteFromBeginning(inputArray)));
         System.out.println(deleteFromArray.deleteFromAGivenPositionBuiltIn(inputArray, 2));
         System.out.println(Arrays.toString(deleteFromArray.deleteFromAGivenPosition(inputArray, 2)));
+        System.out.println(deleteFromArray.deleteFromEndBuiltIn(inputArray));
+        System.out.println(Arrays.toString(deleteFromArray.deleteFromEnd(inputArray)));
     }
 }
