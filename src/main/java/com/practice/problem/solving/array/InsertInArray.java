@@ -44,6 +44,24 @@ public class InsertInArray {
         return output;
     }
 
+    public List<Integer> insertAtTheEndBuiltIn(int[] inputArray, int element){
+        List<Integer> output = new ArrayList<>();
+        for (int ele: inputArray) {
+            output.add(ele);
+        }
+
+        output.add(element);
+        return output;
+    }
+
+    public int[] insertAtTheEnd(int[] inputArray, int element){
+        int[] output = new int[inputArray.length + 1];
+        System.arraycopy(inputArray, 0, output, 0, inputArray.length);
+        output[output.length - 1] = element;
+        return output;
+    }
+
+
     public static void main(String[] args) {
         InsertInArray insertInArray = new InsertInArray();
         int[] inputArray = {10,20,30,40};
@@ -54,5 +72,7 @@ public class InsertInArray {
 
         System.out.println(insertInArray.insertAtGivenPositionBuiltIn(inputArray, 50, 2));
         System.out.println(Arrays.toString(insertInArray.insertAtGivenPosition(inputArray, 50, 2)));
+        System.out.println(insertInArray.insertAtTheEndBuiltIn(inputArray, 50));
+        System.out.println(Arrays.toString(insertInArray.insertAtTheEnd(inputArray, 50)));
     }
 }
