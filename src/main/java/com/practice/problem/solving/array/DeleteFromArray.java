@@ -25,10 +25,29 @@ public class DeleteFromArray {
         return output;
     }
 
+    public List<Integer> deleteFromAGivenPositionBuiltIn(int[] inputArray, int position){
+        List<Integer> output = new ArrayList<>();
+        for (int element : inputArray){
+            output.add(element);
+        }
+
+        output.remove(position - 1);
+        return output;
+    }
+
+    public int[] deleteFromAGivenPosition(int[] inputArray, int position){
+        int[] output = new int[inputArray.length - 1];
+        System.arraycopy(inputArray, 0, output, 0, position - 1);
+        System.arraycopy(inputArray, position, output, position-1, inputArray.length - position);
+        return output;
+    }
+
     public static void main(String[] args) {
         int[] inputArray = {10,20,30,40,50};
         DeleteFromArray deleteFromArray = new DeleteFromArray();
         System.out.println(deleteFromArray.deleteFromArrayBeginningBuiltIn(inputArray));
         System.out.println(Arrays.toString(deleteFromArray.deleteFromBeginning(inputArray)));
+        System.out.println(deleteFromArray.deleteFromAGivenPositionBuiltIn(inputArray, 2));
+        System.out.println(Arrays.toString(deleteFromArray.deleteFromAGivenPosition(inputArray, 2)));
     }
 }
