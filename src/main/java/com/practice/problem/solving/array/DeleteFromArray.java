@@ -58,7 +58,15 @@ public class DeleteFromArray {
         return output;
     }
 
+    public List<Integer> deleteOccurrencesOfElement(int[] inputArray, int element){
+        List<Integer>  output = new ArrayList<>();
+        for(int ele : inputArray){
+            output.add(ele);
+        }
 
+        output.remove(Integer.valueOf(element));
+        return output;
+    }
 
     public static void main(String[] args) {
         int[] inputArray = {10,20,30,40,50};
@@ -69,5 +77,8 @@ public class DeleteFromArray {
         System.out.println(Arrays.toString(deleteFromArray.deleteFromAGivenPosition(inputArray, 2)));
         System.out.println(deleteFromArray.deleteFromEndBuiltIn(inputArray));
         System.out.println(Arrays.toString(deleteFromArray.deleteFromEnd(inputArray)));
+
+        int[] input = {10, 20, 30, 30, 40, 50};
+        System.out.println(deleteFromArray.deleteOccurrencesOfElement(input, 30));
     }
 }
