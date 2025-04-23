@@ -16,7 +16,7 @@ import java.util.List;
  *
  * 1. Normalize the number of rotations
  *      a. If number of rotations is greater than the number of elements in the array then number of rotations equals
- *      the modular division from number of elements in the array, that is numberofRotations = numberOfRotations % lengthOfArray.
+ *      the modular division from number of elements in the array, that is numberOfRotations = numberOfRotations % lengthOfArray.
  *      b. If number of rotations is negative then number of rotations is equal to the subtraction of absolute value of
  *      number of rotations with the array length, that is numberOfRotations = array.length - Math.abs(numberOfRotations)
  *
@@ -64,9 +64,6 @@ public class RotateArray {
             inputArray[j] = inputArray[i];
             inputArray[i] = temp;
         }
-
-        List<Integer> lst = new ArrayList<>();
-        lst.add(0, inputArray[i]);
     }
 
     public static void main(String[] args) {
