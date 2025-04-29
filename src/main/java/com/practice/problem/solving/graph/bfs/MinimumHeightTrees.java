@@ -1,6 +1,4 @@
-package com.practice.problem.solving.graph;
-
-import com.practice.problem.solving.graph.bfs.Vertex;
+package com.practice.problem.solving.graph.bfs;
 
 import java.util.*;
 
