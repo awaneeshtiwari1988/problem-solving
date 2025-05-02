@@ -50,7 +50,6 @@ public class DijkstraAlgorithm {
         }
 
         Collections.reverse(path);
-
         return path;
     }
 
