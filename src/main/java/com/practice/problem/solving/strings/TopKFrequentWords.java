@@ -4,7 +4,7 @@ import java.util.*;
 
 public class TopKFrequentWords {
 
-    public List<String> topKFrequent(String[] words, int k) {
+    public List<String> topKFrequentBucketSort(String[] words, int k) {
         // Step 1: Create Frequency Map
         Map<String, Integer> frequencyMap = new HashMap<>();
         for(String word : words){
@@ -42,9 +42,46 @@ public class TopKFrequentWords {
         return output;
     }
 
+    public List<String> topKFrequentEfficient(String[] words, int k) {
+        // Step 1: Create Frequency Map
+        Map<String, Integer> frequencyMap = new HashMap<>();
+        for(String word : words){
+            frequencyMap.put(word, frequencyMap.getOrDefault(word, 0) + 1);
+        }
+
+        // Step 2: Create Priority Queue Min Heap
+        PriorityQueue<String> minHeap = new PriorityQueue<>((a,b) -> {
+            if(frequencyMap.get(a).equals(frequencyMap.get(b))){
+                return b.compareTo(a);
+            }
+
+            return frequencyMap.get(a) - frequencyMap.get(b);
+        });
+
+        // Step 3: Populate Priority Queue
+        for(String word: frequencyMap.keySet()){
+            minHeap.offer(word);
+            if(minHeap.size() > k){
+                minHeap.poll();
+            }
+        }
+
+        // Step 4: Create Output
+        List<String> output = new ArrayList<>();
+        while (!minHeap.isEmpty()){
+            output.add(minHeap.poll());
+        }
+
+        // Step 5: Reverse the list
+        Collections.reverse(output);
+        return output;
+    }
+
     public static void main(String[] args) {
         TopKFrequentWords topKFrequentWords = new TopKFrequentWords();
         String[] words = {"i","love","leetcode","i","love","coding"};
-        System.out.println(topKFrequentWords.topKFrequent(words, 2));
+        System.out.println(topKFrequentWords.topKFrequentBucketSort(words, 2));
+
+        System.out.println(topKFrequentWords.topKFrequentEfficient(words, 2));
     }
 }
